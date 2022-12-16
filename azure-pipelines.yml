@@ -3,6 +3,8 @@
 trigger:
 - main
 
+pool:
+  name: default
 
 strategy:
   matrix:
