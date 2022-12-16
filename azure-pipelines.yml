@@ -1,9 +1,0 @@
-trigger:
-- main
-
-
-- task: Docker@2
-  inputs:
-    repository: 'https://github.com/kapalulz/azure_pipeline_test'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
