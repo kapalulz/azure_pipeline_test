@@ -3,18 +3,17 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Check aws and git version"
-      - aws --version
-      - git --version
+      aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 671270630644.dkr.ecr.us-east-1.amazonaws.com
 
   pre_build:
     commands:
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 671270630644.dkr.ecr.us-east-1.amazonaws.com
+      aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 671270630644.dkr.ecr.us-east-1.amazonaws.com
 
   build:
     commands:
-      - docker build -t azure_pipeline_hello .
+      docker build -t azure_pipeline_hello .
 
   post_build:
     commands:
-      - docker tag azure_pipeline_hello:latest 671270630644.dkr.ecr.us-east-1.amazonaws.com/azure_pipeline_hello:latest
+      docker tag azure_pipeline_hello:latest 671270630644.dkr.ecr.us-east-1.amazonaws.com/azure_pipeline_hello:latest
+      docker push 671270630644.dkr.ecr.us-east-1.amazonaws.com/azure_pipeline_hello:latest
