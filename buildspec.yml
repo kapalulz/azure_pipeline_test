@@ -17,11 +17,11 @@ phases:
   pre_build:
     commands:
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION| docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-    # - COMMIT_ID=$(git rev-parse --short HEAD)
+      - COMMIT_ID=$(git rev-parse --short HEAD)
 
   build:
     commands:
-      - docker build -t $ECR_REPO_NAME .
+      - docker build -t webapp .
       - docker tag $ECR_REPO_NAME:$ECR_IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$ECR_IMAGE_TAG
       - docker tag $ECR_REPO_NAME:$ECR_IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$COMMIT_ID
      
