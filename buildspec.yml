@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     AWS_DEFAULT_REGION: "us-east-1"
-    AWS_ACCOUNT_ID    : "671270630644"
+    AWS_ACCOUNT_ID    : "************"
     ECR_REPO_NAME     : "azure_pipeline_hello"
     ECR_IMAGE_TAG     : "latest"
 
