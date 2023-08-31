@@ -4,8 +4,6 @@ Works on AWS CodeBuild too.
 
 # Project Description
 
-![Image for CodeBuild](https://github.com/kapalulz/docker_pipeline_azureDevOps_AWS_codebuild/assets/17459523/862bf3a8-c7ee-4432-8769-e55ee2c3be12)
-
 Also compatible with AWS CodeBuild.
 
 * This sample contains the fully implemented program from the tutorial. Please make sure to visit the following link: [Using Flask in Visual Studio Code](https://code.visualstudio.com/docs/python/tutorial-flask). Intermediate steps are not included.
