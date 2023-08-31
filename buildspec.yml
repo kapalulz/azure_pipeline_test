@@ -10,25 +10,20 @@ version: 0.1
 phases:
   install:
     commands:
-      - echo "Check aws and git version"
-      - aws --version
-      - git --version
+      echo "Check aws and git version"
+      aws --version
+      git --version
 
   pre_build:
     commands:
-      - echo "Login to AWS ECR and get commit id"
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 671270630644.dkr.ecr.us-east-1.amazonaws.com
-      - COMMIT_ID=$(git rev-parse --short HEAD)
+      echo "Login to AWS ECR and get commit id"
+      aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 671270630644.dkr.ecr.us-east-1.amazonaws.com
 
   build:
     commands:
-      - echo Building the Docker image...
-      - docker build -t webapp .
-      - docker tag webapp:latest 671270630644.dkr.ecr.us-east-1.amazonaws.com/webapp:latest
-      #docker tag $ECR_REPO_NAME:$ECR_IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$COMMIT_ID
-
+      docker build -t webapp .
+      docker tag webapp:latest 671270630644.dkr.ecr.us-east-1.amazonaws.com/webapp:latest
+      
   post_build:
     commands:
-      - echo Pushing the Docker image...
-      - docker push 671270630644.dkr.ecr.us-east-1.amazonaws.com/webapp:latest
-      #docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$COMMIT_ID
+      docker push 671270630644.dkr.ecr.us-east-1.amazonaws.com/webapp:latest
