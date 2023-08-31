@@ -4,7 +4,7 @@ env:
   variables:
     AWS_DEFAULT_REGION: "us-east-1"
     AWS_ACCOUNT_ID    : "671270630644"
-    ECR_REPO_NAME     : "webapp"
+    ECR_REPO_NAME     : "azure_pipeline_hello"
     ECR_IMAGE_TAG     : "latest"
 
 phases:
